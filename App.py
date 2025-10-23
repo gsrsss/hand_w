@@ -46,7 +46,7 @@ def predictDigit(image, model):
     return result
 
 # --- Interfaz de la App ---
-st.title('✍️ Reconocimiento de Dígitos')
+st.title('Reconocimiento de Dígitos ( ˆ𐃷ˆ) .ᐟ.ᐟ')
 st.subheader("Dibuja un dígito en el panel y presiona 'Predecir'")
 
 # Crear directorios si no existen (para guardar imagen temporal)
@@ -96,3 +96,4 @@ if st.button('Predecir Dígito'):
         st.error("El modelo no se pudo cargar. No se puede predecir.")
     else:
         st.warning('Por favor, dibuja un dígito en el lienzo.')
+
