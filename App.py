@@ -35,9 +35,10 @@ def predictDigit(image, model):
     img = np.array(img, dtype='float32')
     img = img / 255.0  # Normalizar
     
-    # Invertir colores si es necesario (el modelo MNIST espera dígitos blancos sobre fondo negro)
-    # Si el fondo del canvas es blanco y el trazo negro, hay que invertir
-    # img = 1.0 - img # Descomentar si la precisión es baja
+    # --- CORRECCIÓN IMPORTANTE ---
+    # El modelo MNIST espera dígitos BLANCOS sobre fondo NEGRO.
+    # Si dibujamos (naturalmente) NEGRO sobre BLANCO, debemos invertir la imagen.
+    img = 1.0 - img # Descomentar si la precisión es baja
     
     img = img.reshape((1, 28, 28, 1))
     pred = model.predict(img)
@@ -56,8 +57,9 @@ col1, col2 = st.columns([1, 2])
 with col1:
     st.markdown("#### 🖌️ Configuración")
     stroke_width = st.slider('Ancho de línea:', 1, 30, 15)
-    stroke_color = st.color_picker('Color del trazo:', '#FFFFFF')
-    bg_color = st.color_picker('Color de fondo:', '#000000')
+    # Cambiamos los defaults a negro sobre blanco (más natural)
+    stroke_color = st.color_picker('Color del trazo:', '#000000')
+    bg_color = st.color_picker('Color de fondo:', '#FFFFFF')
     canvas_size = st.number_input('Tamaño del lienzo (px):', min_value=100, max_value=500, value=280)
     st.info("Dibuja un solo dígito (0-9).")
 
