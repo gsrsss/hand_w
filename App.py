@@ -23,11 +23,14 @@ st.markdown("""
     }
     /* Contenedor para el canvas */
     .canvas-container {
-        border: 2px dashed #7f8c8d;
+        /* border: 2px dashed #7f8c8d; <-- Eliminado */
         border-radius: 12px;
-        padding: 10px;
-        background-color: #f8f9fa;
+        /* padding: 10px; <-- Eliminado */
+        /* background-color: #f8f9fa; <-- Eliminado */
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        /* Centrar el canvas dentro de la columna */
+        display: flex;
+        justify-content: center;
     }
     /* Estilo del canvas (st_canvas crea su propio iframe/canvas) */
     [key="canvas"] {
@@ -174,4 +177,3 @@ with st.expander("ℹ️ Acerca de esta App"):
     st.text("Neuronal Artificial (RNA) de reconocer dígitos escritos a mano.")
     st.text("Basado en el desarrollo de Vinay Uniyal.")
     # st.write("[GitHub Repo Link](https://github.com/Vinay2022/Handwritten-Digit-Recognition)")
-
