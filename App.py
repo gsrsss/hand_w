@@ -78,11 +78,14 @@ st.markdown("""
 @st.cache_resource
 def load_app_model():
     try:
-        model = tf.keras.models.load_model("model/handwritten.h5")
+        # --- CORRECCIÓN AQUÍ ---
+        # Añadimos compile=False para ignorar el optimizador,
+        # lo que a menudo soluciona errores de carga HDF5.
+        model = tf.keras.models.load_model("model/handwritten.h5", compile=False)
         return model
     except Exception as e:
         st.error(f"Error al cargar el modelo 'model/handwritten.h5': {e}")
-        st.warning("Asegúrate de que el archivo 'model/handwritten.h5' exista.")
+        st.warning("Asegúrate de que el archivo 'model/handwritten.h5' exista y no esté corrupto.")
         return None
 
 model = load_app_model()
@@ -171,3 +174,4 @@ with st.expander("ℹ️ Acerca de esta App"):
     st.text("Neuronal Artificial (RNA) de reconocer dígitos escritos a mano.")
     st.text("Basado en el desarrollo de Vinay Uniyal.")
     # st.write("[GitHub Repo Link](https://github.com/Vinay2022/Handwritten-Digit-Recognition)")
+
